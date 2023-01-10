@@ -12,9 +12,8 @@ def call(String stageName){
      {
        sh "mvn deploy"
      }
+  else if ("${stageName}" == "Deploy to Tomcat")
+  {
+    deploy adapters: [tomcat9(credentialsId: 'TomcatCredentials', path: '', url: 'http://172.31.10.30:8080/')], contextPath: null, onFailure: false, war: 'target/*war'
+  }
 }
-Footer
-© 2023 GitHub, Inc.
-Footer navigation
-Terms
-Priv
